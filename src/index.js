@@ -9,6 +9,7 @@ let currentImageIndex = 0;
 const rightArrow = document.querySelector(".right");
 const leftArrow = document.querySelector(".left");
 const dotContainer = document.querySelector('.carousel-dots')
+let globalTimeoutID = null;
 
 images.forEach((_, index) => {
     const dot = document.createElement('span');
@@ -29,6 +30,7 @@ function showImage(index) {
     currentImageIndex = index;
     carousel.style.left = `-${index * imageWidth}px`;
     dots[index].classList.add('active');
+    resetTimeout(globalTimeoutID);
 }
 
 function moveRight() {
@@ -44,3 +46,9 @@ function moveLeft() {
 rightArrow.addEventListener('click', moveRight);
 leftArrow.addEventListener('click', moveLeft);
 
+function resetTimeout(timeoutID) {
+    if (timeoutID) clearTimeout(timeoutID);
+    globalTimeoutID = setTimeout(moveRight, 5000);
+}
+
+resetTimeout(globalTimeoutID);
