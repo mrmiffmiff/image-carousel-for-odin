@@ -1,0 +1,36 @@
+/* This should keep things centered for easy viewing */
+@property --image-width {
+    syntax: "<width>";
+    inherits: false;
+    initial-value: 750px;
+}
+
+body {
+    --image-width: 750px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    width: var(--image-width);
+    overflow: hidden;
+}
+
+.picture-frame {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+}
+
+.carousel-image {
+    width: var(--image-width);
+    height: 500px;
+    object-fit: fill;
+    flex-shrink: 0;
+}
